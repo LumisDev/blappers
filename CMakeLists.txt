@@ -9,12 +9,10 @@ add_subdirectory(submodules/SFML)
 add_subdirectory(submodules/Box2D)
 
 
-# Include directories for SFML and Box2D
-include_directories(${SFML_INCLUDE_DIR} ${Box2D_INCLUDE_DIR})
-
 # Add your executable
 add_executable(blappers WIN32 ./src/main.cpp)
 
 
 # Link SFML and Box2D libraries
 target_link_libraries(blappers sfml-graphics sfml-window sfml-system Box2D)
+target_include_directories(blappers BEFORE PRIVATE ${SFML_INCLUDE_DIR} PRIVATE ${BOX2D_INCLUDE_DIR})
